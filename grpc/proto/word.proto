@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option go_package = "grpc/pb/word";
+
+package word;
+
+service Word {
+    rpc GetTop10MostUsedWords(Request) returns (Response);
+}
+
+message Request {
+    string Text = 1;
+}
+
+message Response {
+    repeated WordCount WordCountList = 1;
+}
+
+message WordCount {
+    string Word = 1;
+	uint64 Count = 2;
+}
